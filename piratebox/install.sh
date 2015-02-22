@@ -46,18 +46,40 @@ if [[ ! -d /opt ]]; then
 	mkdir -p /opt
 fi
 
+#if piratebox already exists remove it
+if [[ ! -d /opt/piratebox ]]; then
+	echo "Piratebox already installed. Would you like to overwrite it? (Y/n):"
+	read RESPONSE
+	if [[ $RESPONSE = "Y" || $RESPONSE = "y" || $RESPONSE = "" ]]; then
+		"Removing /opt/piratebox"
+		rm -rf /opt/piratebox
+	fi
+fi
+
 cp -rv "$CURRENT_DIR"/piratebox /opt &> /dev/null
 echo "Finished copying files..."
-echo "$NET.$IP_SHORT piratebox.lan">>/etc/hosts
-echo "$NET.$IP_SHORT piratebox">>/etc/hosts
+
+if cat /etc/hosts | grep "$NET.$IP_SHORT piratebox.lan$" ; then 
+	echo "\"$NET.$IP_SHORT piratebox.lan\" was already found in /etc/hosts"
+else
+	echo "Adding $NET.$IP_SHORT piratebox.lan to /etc/hosts"
+	echo "$NET.$IP_SHORT piratebox.lan">>/etc/hosts
+fi
+
+if cat /etc/hosts | grep "$NET.$IP_SHORT piratebox$" ; then 
+	echo "Adding $NET.$IP_SHORT piratebox to /etc/hosts"
+	echo "\"$NET.$IP_SHORT piratebox\" was already found in /etc/hosts"
+else
+	echo "$NET.$IP_SHORT piratebox">>/etc/hosts
+fi
 
 if [[ -d /etc/init.d/ ]]; then
-	ln -s /opt/piratebox/init.d/piratebox /etc/init.d/piratebox
+	ln -sf /opt/piratebox/init.d/piratebox /etc/init.d/piratebox
 	echo "To make PirateBox start at boot run: update-rc.d piratebox defaults"
 #	systemctl enable piratebox #This enables PirateBox at start up... could be useful for Live
 else
 	#link between opt and etc/pb
-	ln -s /opt/piratebox/init.d/piratebox.service /etc/systemd/system/piratebox.service
+	ln -sf /opt/piratebox/init.d/piratebox.service /etc/systemd/system/piratebox.service
 	echo "To make PirateBox start at boot run: systemctl enable piratebox"
 fi
 

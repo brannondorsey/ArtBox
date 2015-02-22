@@ -1,7 +1,7 @@
 #!/bin/sh
 ## PirateBox installer script  v.01
 ##  created by Matthias Strubel   2011-08-04
-##
+##  updated for ArtBox by Brannon Dorsey 2015-02-22
 
 ## ASH does not support arrays, so no nice foreach 
 # All Perl packages for kareha
@@ -17,7 +17,7 @@ if [ -z  $1 ] || [ -z $2 ]; then
   echo "       part2          : sets Permissions and links correctly"
   echo "       imageboard     : configures kareha imageboard with Basic configuration"
   echo "                        should be installed in <Piratebox-Folder>/share/board"
-  echo "       pyForum        : Simple PythonForum"
+  # echo "       pyForum        : Simple PythonForum"
   echo "       station_cnt        : Adds Statio counter to your Box - crontab entry"
   echo "       flush_dns_reg      : Installs crontask to flush dnsmasq regulary"
   echo "       hostname  'name'   : Exchanges the Hostname displayed in browser"
@@ -34,17 +34,17 @@ fi
 PIRATEBOX_CONFIG=$1
 . $1 
 
-if [ $2 = 'pyForum' ] ; then
-    cp -v $PIRATEBOX_FOLDER/src/forest.py  $WWW_FOLDER/cgi-bin
-    cp -v $PIRATEBOX_FOLDER/src/forest.css $WWW_FOLDER/
-    cp -v $PIRATEBOX_FOLDER/src/forum_forest.html  $WWW_FOLDER/forum.html
-    mkdir -p $PIRATEBOX_FOLDER/forumspace
-    chmod a+rw -R  $PIRATEBOX_FOLDER/forumspace
-    chown $LIGHTTPD_USER:$LIGHTTPD_GROUP  $WWW_FOLDER/cgi-bin/forest.py
-    chown $LIGHTTPD_USER:$LIGHTTPD_GROUP  $WWW_FOLDER/forest.css
-    chown $LIGHTTPD_USER:$LIGHTTPD_GROUP  $WWW_FOLDER/forum.html
-    echo "Copied the files. Recheck your PirateBox now. "
-fi
+# if [ $2 = 'pyForum' ] ; then
+#     cp -v $PIRATEBOX_FOLDER/src/forest.py  $WWW_FOLDER/cgi-bin
+#     cp -v $PIRATEBOX_FOLDER/src/forest.css $WWW_FOLDER/
+#     cp -v $PIRATEBOX_FOLDER/src/forum_forest.html  $WWW_FOLDER/forum.html
+#     mkdir -p $PIRATEBOX_FOLDER/forumspace
+#     chmod a+rw -R  $PIRATEBOX_FOLDER/forumspace
+#     chown $LIGHTTPD_USER:$LIGHTTPD_GROUP  $WWW_FOLDER/cgi-bin/forest.py
+#     chown $LIGHTTPD_USER:$LIGHTTPD_GROUP  $WWW_FOLDER/forest.css
+#     chown $LIGHTTPD_USER:$LIGHTTPD_GROUP  $WWW_FOLDER/forum.html
+#     echo "Copied the files. Recheck your PirateBox now. "
+# fi
 
 
 
