@@ -5,15 +5,17 @@
 # 
 #         USAGE:  ./install.sh 
 # 
-#   DESCRIPTION:  Install file for PirateBox. 
+#   DESCRIPTION:  Install file for ArtBox (a fork of PirateBox). 
 # 
-#       OPTIONS:  ./install.sh <default|board> <optional: USB path>
+#       OPTIONS:  ./install.sh
 #  REQUIREMENTS:  ---
 #          BUGS:  Link from install
 #         NOTES:  ---
 #        AUTHOR: Cale 'TerrorByte' Black, cablack@rams.colostate.edu
+#        AUTHOR: Brannon Dorsey, brannon@brannondorsey.com (updates for ArtBox)
 #       COMPANY:  ---
 #       CREATED: 02.02.2013 19:50:34 MST
+#       UPDATED: 02.22.2015 by Brannon Dorsey
 #      REVISION:  0.3.1
 #=======================================================================
 #Import PirateBox conf
@@ -27,12 +29,12 @@ if [[ $EUID -ne 0 ]]; then
         exit 0
 fi
 
-if [[ $1 ]]; then
-	echo "Installing..."
-else
-	echo "Useage: /bin/bash install.sh <default|board>"
-	exit 0
-fi
+# if [[ $1 ]]; then
+# 	echo "Installing..."
+# else
+# 	echo "Useage: /bin/bash install.sh"
+# 	exit 0
+# fi
 
 if [[ -f  "$CURRENT_DIR"/$CURRENT_CONF ]]; then
 	. $CURRENT_CONF 2> /dev/null
@@ -87,7 +89,7 @@ fi
 #TODO missing anything in $DEPENDENCIES?
 # Modified Script by martedì at http://www.mirkopagliai.it/bash-scripting-check-for-and-install-missing-dependencies/
 PKGSTOINSTALL="hostapd lighttpd dnsmasq"
-EXTRAPKGSTOINSTALL="php5-cgi"
+EXTRAPKGSTOINSTALL="php5-cgi macchanger"
 
 # If some dependencies are missing, asks if user wants to install
 if [ "$PKGSTOINSTALL" != "" ]; then
@@ -154,21 +156,21 @@ if [ "$PKGSTOINSTALL" != "" ]; then
 fi
 
 #install piratebox with the given option
-case "$1" in
-	default)
-		/opt/piratebox/bin/install_piratebox.sh /opt/piratebox/conf/piratebox.conf part2
-		;;
-	board)
-		/opt/piratebox/bin/install_piratebox.sh /opt/piratebox/conf/piratebox.conf imageboard
-		echo "############################################################################"
-		echo "#Edit /opt/piratebox/share/board/config.pl and change ADMIN_PASS and SECRET#"
-		echo "############################################################################"
-		;;
-	*)
-		echo "$1 is not an option. Useage: /bin/bash install.sh <default|board>"
-		exit 0
-		;;
-esac
+# case "$1" in
+# 	default)
+/opt/piratebox/bin/install_piratebox.sh /opt/piratebox/conf/piratebox.conf part2
+	# 	;;
+	# board)
+		# /opt/piratebox/bin/install_piratebox.sh /opt/piratebox/conf/piratebox.conf imageboard
+		# echo "############################################################################"
+		# echo "#Edit /opt/piratebox/share/board/config.pl and change ADMIN_PASS and SECRET#"
+		# echo "############################################################################"
+		# ;;
+# 	*)
+# 		echo "$1 is not an option. Useage: /bin/bash install.sh <default|board>"
+# 		exit 0
+# 		;;
+# esac
 
 echo "##############################"
 echo "#PirateBox has been installed#"
@@ -176,4 +178,5 @@ echo "##############################"
 echo ""
 echo "Use: sudo service piratebox <start|stop>"
 echo "or for systemd systems Use: sudo systemctl <start|stop|restart> piratebox"
+echo "To make PirateBox start at boot run: update-rc.d piratebox defaults"
 exit 0
