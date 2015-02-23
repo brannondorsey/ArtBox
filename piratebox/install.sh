@@ -97,13 +97,13 @@ if [ "$PKGSTOINSTALL" != "" ]; then
 	
 	echo "Piratebox requires the following dependencies:"
 	echo "	$PKGSTOINSTALL"
-	echo "Would you like to install them now? (Y/n):"
+	echo -n "Would you like to install them now? (Y/n):"
 	read PKGSURE
 
 	if [ "$EXTRAPKGSTOINSTALL" != "" ]; then
 		echo "Piratebox supports the following addon dependencies:"
 		echo "	$EXTRAPKGSTOINSTALL"
-		echo "Would you like to install them now? (Y/n):"
+		echo -n "Would you like to install them now? (Y/n):"
 		read EXTRAPKGSURE
 	fi
 
@@ -161,9 +161,9 @@ fi
 # 	default)
 /opt/piratebox/bin/install_piratebox.sh /opt/piratebox/conf/piratebox.conf part2
 
-echo "Would you like to install a crontab to automatically provide the number of connected clients to your www folder? (Y/n):"
+echo -n "Would you like to install a crontab to automatically provide the number of connected clients to your www folder? (Y/n):"
 read INSTALL_STATION_CNT
-if [INSTALL_STATION_CNT == "Y" || INSTALL_STATION_CNT == "Y" || INSTALL_STATION_CNT == ""]; then
+if [[ INSTALL_STATION_CNT == "Y" || INSTALL_STATION_CNT == "Y" || INSTALL_STATION_CNT == "" ]]; then
 	/opt/piratebox/bin/install_piratebox.sh /opt/piratebox/conf/piratebox.conf station_cnt
 	[ "$?" == "0" ] echo "Crontab installed. View number of connected station clients at www/station_cnt.txt"
 fi
