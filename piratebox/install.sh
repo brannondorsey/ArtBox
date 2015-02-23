@@ -62,14 +62,14 @@ fi
 cp -rv "$CURRENT_DIR"/piratebox /opt &> /dev/null
 echo "Finished copying files to "/opt/piratebox"..."
 
-if cat /etc/hosts | grep "$NET.$IP_SHORT piratebox.lan$" ; then 
+if cat /etc/hosts | grep "$NET.$IP_SHORT piratebox.lan$" 2> /dev/null ; then 
 	echo "\"$NET.$IP_SHORT piratebox.lan\" was already found in /etc/hosts"
 else
 	echo "Adding $NET.$IP_SHORT piratebox.lan to /etc/hosts"
 	echo "$NET.$IP_SHORT piratebox.lan">>/etc/hosts
 fi
 
-if cat /etc/hosts | grep "$NET.$IP_SHORT piratebox$" ; then 
+if cat /etc/hosts | grep "$NET.$IP_SHORT piratebox$" 2> /dev/null ; then 
 	echo "Adding $NET.$IP_SHORT piratebox to /etc/hosts"
 	echo "\"$NET.$IP_SHORT piratebox\" was already found in /etc/hosts"
 else
