@@ -95,8 +95,8 @@ EXTRAPKGSTOINSTALL="php5-cgi macchanger"
 # If some dependencies are missing, asks if user wants to install
 if [ "$PKGSTOINSTALL" != "" ]; then
 	
-	echo -n "Piratebox requires the following dependencies:"
-	echo -n "	$PKGSTOINSTALL"
+	echo -n "Piratebox requires the following dependencies:\n"
+	echo -n "\t$PKGSTOINSTALL\n"
 	echo -n "Would you like to install them now? (Y/n):"
 	read PKGSURE
 
