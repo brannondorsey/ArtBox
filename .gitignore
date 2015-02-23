@@ -6,3 +6,4 @@ image_stuff/*
 piratebox/piratebox/bin/miniircd.py
 piratebox_ws_*
 piratebox-ws_*
+.DS_Store
