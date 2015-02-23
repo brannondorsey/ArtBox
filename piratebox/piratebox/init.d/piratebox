@@ -126,13 +126,12 @@ case "$1" in
          log_end_msg $?
       fi
 
-       if [ "$USE_DNSMASQ" = "yes" ] ;  then
+      if [ "$USE_DNSMASQ" = "yes" ] ;  then
          log_daemon_msg  "Starting dnsmasq... "
-   # pidfile is written by dnsmasq
+          # pidfile is written by dnsmasq
          start-stop-daemon --start --quiet --exec /usr/sbin/dnsmasq  --  $CMD_DNSMASQ  
          log_end_msg $?
-       fi
-
+      fi
 
         if [ "$DROOPY_ENABLED" = "yes" ] ; then
           #Start here the PirateBox-Parts droopy i.e.
@@ -200,11 +199,11 @@ case "$1" in
     #       log_end_msg $?
     # fi
 
-    if ["$USE_LIGHTTPD" = "yes"] ; then
+    if [ "$USE_LIGHTTPD" = "yes" ] ; then
       log_daemon_msg "Stopping lighttpd..."
       start-stop-daemon --stop --retry 30 --quiet --pidfile $PIDFILE_LIGHTTPD
       log_end_msg $?
-    elif ["$ALT_WEBSERVER_EXEC" != ""]; then
+    elif [ "$ALT_WEBSERVER_EXEC" != "" ]; then
       log_daemon_msg "Stopping alternative webserver..."
       start-stop-daemon --stop --retry 30 --quiet --pidfile $PIDFILE_ALT_WEBSERVER
       log_end_msg $?
