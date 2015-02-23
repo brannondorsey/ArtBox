@@ -51,16 +51,17 @@ fi
 
 #if piratebox already exists remove it
 if [[ -d /opt/piratebox ]]; then
-	echo "Piratebox already installed. Would you like to overwrite it? (Y/n):"
+	echo -n "Piratebox already installed. Would you like to overwrite it? (Y/n):"
 	read RESPONSE
 	if [[ $RESPONSE = "Y" || $RESPONSE = "y" || $RESPONSE = "" ]]; then
 		"Removing old /opt/piratebox..."
-		rm -rf /opt/piratebox
+		rm -rf /opt/piratebox/*
+		rmdir /opt/piratebox
 	fi
 fi
 
 cp -rv "$CURRENT_DIR"/piratebox /opt &> /dev/null
-echo "Finished copying files..."
+echo "Finished copying files to "/opt/piratebox"..."
 
 if cat /etc/hosts | grep "$NET.$IP_SHORT piratebox.lan$" ; then 
 	echo "\"$NET.$IP_SHORT piratebox.lan\" was already found in /etc/hosts"
