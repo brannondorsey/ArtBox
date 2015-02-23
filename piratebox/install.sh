@@ -163,7 +163,7 @@ fi
 
 echo -n "Would you like to install a crontab to automatically provide the number of connected clients to your www folder? (Y/n):"
 read INSTALL_STATION_CNT
-if [[ INSTALL_STATION_CNT == "Y" || INSTALL_STATION_CNT == "Y" || INSTALL_STATION_CNT == "" ]]; then
+if [[ INSTALL_STATION_CNT == "Y" || INSTALL_STATION_CNT == "y" || INSTALL_STATION_CNT == "" ]]; then
 	/opt/piratebox/bin/install_piratebox.sh /opt/piratebox/conf/piratebox.conf station_cnt
 	[ "$?" == "0" ] echo "Crontab installed. View number of connected station clients at www/station_cnt.txt"
 fi
@@ -181,6 +181,7 @@ fi
 # 		;;
 # esac
 
+echo ""
 echo "##############################"
 echo "#PirateBox has been installed#"
 echo "##############################"
