@@ -108,7 +108,7 @@ if [ "$PKGSTOINSTALL" != "" ]; then
 	fi
 
 	# If user want to install missing dependencies
-	if [[ $PKGSURE = "Y" || $PKGSURE = "y" || $PKGSURE = "" || $EXTRAPKGSURE = "Y" || $EXTRAPKGSURE = "y" || $EXTRAPKGSURE = ""]]; then
+	if [[ $PKGSURE = "Y" || $PKGSURE = "y" || $PKGSURE = "" || $EXTRAPKGSURE = "Y" || $EXTRAPKGSURE = "y" || $EXTRAPKGSURE = "" ]] ; then
 		# Debian, Ubuntu and derivatives (with apt-get)
 		if which apt-get &> /dev/null; then
 			if [[ $PKGSURE = "Y" || $PKGSURE = "y" || $PKGSURE = "" ]]; then 
