@@ -3,8 +3,6 @@
 IFS='
 '
 
-
-
 cd $1
 ls_list=$( find ./ )
 
