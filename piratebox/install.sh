@@ -50,7 +50,7 @@ if [[ ! -d /opt ]]; then
 fi
 
 #if piratebox already exists remove it
-if [[ ! -d /opt/piratebox ]]; then
+if [[ -d /opt/piratebox ]]; then
 	echo "Piratebox already installed. Would you like to overwrite it? (Y/n):"
 	read RESPONSE
 	if [[ $RESPONSE = "Y" || $RESPONSE = "y" || $RESPONSE = "" ]]; then
