@@ -100,7 +100,7 @@ if [ "$PKGSTOINSTALL" != "" ]; then
 	echo -n "Would you like to install them now? (Y/n):"
 	read PKGSURE
 
-	if [ "$EXTRAPKGSTOINSTALL" != "" ];
+	if [ "$EXTRAPKGSTOINSTALL" != "" ]; then
 		echo -n "Piratebox supports the following addon dependencies:"
 		echo -n "	$EXTRAPKGSTOINSTALL"
 		echo -n "Would you like to install them now? (Y/n):"
