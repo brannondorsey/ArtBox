@@ -39,7 +39,8 @@ fi
 if [[ -f  "$CURRENT_DIR"/$CURRENT_CONF ]]; then
 	. $CURRENT_CONF 2> /dev/null
 else
-	echo "PirateBox config is not in its normal directory"
+	echo "PirateBox config is not in its normal directory."
+	echo "Expecting it in \"$CURRENT_DIR/$CURRENT_DIR\"."
 	exit 0
 fi
 
@@ -53,7 +54,7 @@ if [[ ! -d /opt/piratebox ]]; then
 	echo "Piratebox already installed. Would you like to overwrite it? (Y/n):"
 	read RESPONSE
 	if [[ $RESPONSE = "Y" || $RESPONSE = "y" || $RESPONSE = "" ]]; then
-		"Removing /opt/piratebox"
+		"Removing old /opt/piratebox..."
 		rm -rf /opt/piratebox
 	fi
 fi
