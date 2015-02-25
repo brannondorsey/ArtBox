@@ -1,4 +1,4 @@
-*.pyc
+l*.pyc
 *.swp
 piratebox/piratebox/version
 piratebox/piratebox/www/chat_content.html
@@ -7,3 +7,4 @@ piratebox/piratebox/bin/miniircd.py
 piratebox_ws_*
 piratebox-ws_*
 .DS_Store
+._.DS_Store
