@@ -17,13 +17,7 @@
 #    END_LEASE         =                         end    250
 #    LEASE_DURATION    =    lease time           30min
 #    HOSTNAME          =  piratebox.lan   - o'rly?  Maybe generate some additional stuff here
-#  -
-#    GLOBAL_CHAT       = Enable Broadcasts
-#    GLOBAL_DEST       = Broadcast IP destinations
-#    PYTHONPATH        = Path of PirateBox python libs
-#    GEN_CHATFILE      = generated html chatfile
 #    PIRATEBOX         = PirateBox Folder
-#    CHATFILE          = data store for Shoutbox-content
 #    
 #
 #  Matthias Strubel    -- 08.06.2012
@@ -35,7 +29,6 @@ HOSTS_CONFIG=""
 DEFAULT_HOSTS=""
 LEASE_FILE=""
 RADVD_CONFIG=""
-LIGHTTPD_ENV_CONFIG=""
 
 set_pathnames() {
   CONFIG_PATH=$1/conf
@@ -46,7 +39,6 @@ set_pathnames() {
   DEFAULT_DNSMASQ=$CONFIG_PATH/dnsmasq_default.conf
   RADVD_CONFIG=$CONFIG_PATH/radvd_generated.conf
   LEASE_FILE=$LEASE_FILE_LOCATION
-  LIGHTTPD_ENV_CONFIG=$CONFIG_PATH/lighttpd/env
 }
 
 generate_hosts() {
@@ -113,38 +105,6 @@ generate_radvd(){
 
 }
 
-#------------ lighttpd env config - Start ---------------------
-
-generate_lighttpd_env() {
-        local GLOBAL_CHAT=$1
-        local GLOBAL_DEST="$2"
-	local PYTHONPATH=$3
-	local SHOUTBOX_GEN_HTMLFILE=$4
-	local PIRATEBOX=$5
-	local SHOUTBOX_CHATFILE=$6
-
-        echo "Generating Environment-config for lighttpd ....."
-
-        LIGHTTPD_ENV_BR_LINE=""
-	if [ "$GLOBAL_CHAT" = "yes" ] ; then
-	     LIGHTTPD_ENV_BR_LINE="   \"SHOUTBOX_BROADCAST_DESTINATIONS\" => \"$GLOBAL_DEST\" , "
-	fi
-
-	LIGHTTPD_ENV="setenv.add-environment = ( 
-	   \"PYTHONPATH\"             => \"$PYTHONPATH:$PIRATEBOX/python_lib\", 
-	   \"SHOUTBOX_GEN_HTMLFILE\"  => \"$SHOUTBOX_GEN_HTMLFILE\" , 
-	   \"SHOUTBOX_CHATFILE\"      => \"$SHOUTBOX_CHATFILE\" , 
-	   $LIGHTTPD_ENV_BR_LINE 
-
-        )"
-
-       echo $LIGHTTPD_ENV > $LIGHTTPD_ENV_CONFIG
-}
-
-#------------ lighttpd env config - End   ---------------------
-
-
-
 if [ -z  $1 ] ; then
   echo "Usage is 
       generate_config_files.sh /opt/piratebox/conf/piratebox.conf
@@ -171,7 +131,4 @@ if [ "$IPV6_ENABLE" = "yes" ] ; then
 fi
 generate_hosts $HOST  $IP  $IPV6
 generate_dnsmasq  $NET $IP_SHORT  $START_LEASE  $END_LEASE $LEASE_DURATION $DNSMASQ_INTERFACE
-generate_lighttpd_env $GLOBAL_CHAT "$GLOBAL_DEST" $PIRATEBOX_PYTHONPATH $GEN_CHATFILE $PIRATEBOX_FOLDER  $CHATFILE
-
-
 
