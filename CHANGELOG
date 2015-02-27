@@ -1,5 +1,27 @@
 CHANGELOG
 
+#############################
+#     EmptyBox changelog    #
+#############################
+
+=== 1.0.0 ===
+* Remove Droopy
+* Remove Shoutbox and all subsequent scripts
+* Remove python_lib directory and all scripts
+* Add support for Karma-Hostapd in hostapd.conf
+* Add uninstall.sh script
+* Modify install.sh script to overwrite existing /opt/piratebox
+* Remove init.d/piratebox_alt
+* Add fastcgi.conf to conf/lighttpd/
+* Remove env from conf/lighttpd
+
+The below changelog pertains to the PirateBox project
+before it was forked and modified as EmptyBox
+
+#############################
+#     PirateBox changelog   #
+#############################
+
 === 1.0.2 ===
 * [Fix] Settings for correct permission of shoutbox files
 * [Fix] Broken probe function in some shells
