@@ -104,6 +104,25 @@ This configuration use my `/path/to/server.js` web server instead of the default
 
 ## Digging Deeper
 
+### Directory Overview
+
+Once installed, EmptyBox uses the directory in `/opt/emptybox`. Note that if you installed from git, any changes you make to the cloned repository will not take effect unless you reinstall. You should instead edit the files in the `/opt/emptybox` directory.
+
+- `/opt/emptybox/bin`: Binarys and Scripts
+- `/opt/emptybox/conf`:  EmptyBox related configs
+- `/opt/emptybox/init.d`: The init-script that `/etc/init.d` symlinks to
+- `/opt/emptybox/www`: Public Web folder served by EmptyBox
+- `/opt/emptybox/tmp`: Error-log, Process IDs, DHCP lease file, etc...
+
+### Changing Directory
+
+If you decide not to run piratebox under `/opt` you have to change following scripts before install:
+
+- `emptybox/conf/emptybox.conf`
+- `emptybox/conf/lighttpd/lighttpd.conf`
+- `emptybox/init.d/emptybox`
+
+
 ### Using Hooks
 
 ## EmptyBox vs PirateBox
@@ -123,7 +142,7 @@ EmptyBox is developed and maintained by Brannon Dorsey using code that was mostl
 
 It is released under the GPL-3 license:
 
-© 2012-2014 Matthias Strubel (PirateBox code)<br>
+© 2011-2014 Matthias Strubel (PirateBox code)<br>
 © 2015 Brannon Dorsey (EmptyBox modifications)
 
 

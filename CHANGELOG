@@ -16,7 +16,11 @@ CHANGELOG
 * Remove env from conf/lighttpd
 * Remove uneeded bin/ scripts
 * Modify conf/piratebox.conf removing uneeded variables and add new ones
-# Remove share/ directory
+* Remove share/ directory
+* Remove BuildScripts/
+* Remove Makefile
+* Remove OpenWRT images
+* Move piratebox/piratebox to root directory
 
 The below changelog pertains to the PirateBox project
 before it was forked and modified as EmptyBox
