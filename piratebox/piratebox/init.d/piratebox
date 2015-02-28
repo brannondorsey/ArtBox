@@ -81,9 +81,6 @@ case "$1" in
     echo "Empty tmp folder"
     find   $PIRATEBOX/tmp/  -exec rm {} \;
 
-    #echo "Copy over design files"
-    #$PIRATEBOX/bin/distribute_files.sh $SHARE_FOLDER/Shared
-
     if [ "$DO_IW" = "yes" ] ; then
        log_daemon_msg " Setting up Interface (iw) "
        iw $PHY_IF interface add $INTERFACE type managed
@@ -93,6 +90,7 @@ case "$1" in
       log_daemon_msg "  Probing wlan"
       #Setting up WLAN Interface
       piratebox_setup_wlan.sh  $CONF probe
+      log_end_msg $?
     fi
      if  [ $? -ne 0 ] ;  then
        log_failure_msg "failed probe Interface"

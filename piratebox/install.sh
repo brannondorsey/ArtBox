@@ -56,6 +56,8 @@ if [[ -d /opt/piratebox ]]; then
 	if [[ $RESPONSE = "Y" || $RESPONSE = "y" || $RESPONSE = "" ]]; then
 		"Removing old /opt/piratebox..."
 		rm -rf /opt/piratebox &> /dev/null
+	else
+		exit 0;
 	fi
 fi
 
