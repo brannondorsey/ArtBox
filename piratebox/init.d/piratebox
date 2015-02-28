@@ -79,7 +79,7 @@ case "$1" in
     echo "Empty tmp folder"
     find   $PIRATEBOX/tmp/  -exec rm {} \;
 
-    if [ "$RANDOMIZE_MAC_ADDRESS" = yes] ; then
+    if [ "$RANDOMIZE_MAC_ADDRESS" = yes ] ; then
         if [ -x "$(command -v macchanger)" ]; then
           log_daemon_msg "Randomizing MAC address"
           macchanger -r $INTERFACE
@@ -163,7 +163,7 @@ case "$1" in
 
      $PIRATEBOX/bin/hooks/hook_piratebox_stop.sh  "$CONF"
 
-    if [ "$RANDOMIZE_MAC_ADDRESS" = yes && -x "$(command -v macchanger)" ] ; then
+    if [ "$RANDOMIZE_MAC_ADDRESS" = yes ] && [ -x "$(command -v macchanger)" ] ; then
        log_daemon_msg  "Reseting MAC address"
        macchanger -p $INTERFACE
        log_end_msg  $?
