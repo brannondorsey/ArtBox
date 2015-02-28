@@ -115,7 +115,7 @@ EmptyBox differs from PirateBox in that it:
 - Runs on a Kali Linux distribution on the Raspberry Pi.
 - Provides documentation and support that stresses using the code and features that PirateBox developed to auto-deploy a Captive Portal Access Point independent of its "DIY anonymous offline file-sharing and communications system."
 
-
+Less is more.
 
 ## License and Credit
 
