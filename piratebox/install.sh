@@ -12,7 +12,7 @@
 #          BUGS:  Link from install
 #         NOTES:  ---
 #        AUTHOR: Cale 'TerrorByte' Black, cablack@rams.colostate.edu
-#        AUTHOR: Brannon Dorsey, brannon@brannondorsey.com (updates for ArtBox)
+#        AUTHOR: Brannon Dorsey, brannon@brannondorsey.com (updates for EmptyBox)
 #       COMPANY:  ---
 #       CREATED: 02.02.2013 19:50:34 MST
 #       UPDATED: 02.22.2015 by Brannon Dorsey
@@ -28,13 +28,6 @@ if [[ $EUID -ne 0 ]]; then
         echo "This script must be run as root" #1>&2
         exit 0
 fi
-
-# if [[ $1 ]]; then
-# 	echo "Installing..."
-# else
-# 	echo "Useage: /bin/bash install.sh"
-# 	exit 0
-# fi
 
 if [[ -f  "$CURRENT_DIR"/$CURRENT_CONF ]]; then
 	. $CURRENT_CONF 2> /dev/null
@@ -158,9 +151,6 @@ if [ "$PKGSTOINSTALL" != "" ]; then
 	fi
 fi
 
-#install piratebox with the given option
-# case "$1" in
-# 	default)
 /opt/piratebox/bin/install_piratebox.sh /opt/piratebox/conf/piratebox.conf part2
 
 echo -n "Would you like to install a crontab to automatically provide the number of connected clients to your www folder? (Y/n):"
@@ -169,19 +159,6 @@ if [[ INSTALL_STATION_CNT == "Y" || INSTALL_STATION_CNT == "y" || INSTALL_STATIO
 	/opt/piratebox/bin/install_piratebox.sh /opt/piratebox/conf/piratebox.conf station_cnt
 	[ "$?" == "0" ] echo "Crontab installed. View number of connected station clients at www/station_cnt.txt"
 fi
-
-	# 	;;
-	# board)
-		# /opt/piratebox/bin/install_piratebox.sh /opt/piratebox/conf/piratebox.conf imageboard
-		# echo "############################################################################"
-		# echo "#Edit /opt/piratebox/share/board/config.pl and change ADMIN_PASS and SECRET#"
-		# echo "############################################################################"
-		# ;;
-# 	*)
-# 		echo "$1 is not an option. Useage: /bin/bash install.sh <default|board>"
-# 		exit 0
-# 		;;
-# esac
 
 echo ""
 echo "##############################"

@@ -39,8 +39,6 @@ CONF_DNSMASQ=$PIRATEBOX/conf/dnsmasq_generated.conf
 
 CONF_LIGHTTPD=$PIRATEBOX/conf/lighttpd/lighttpd.conf
 
-export PYTHONPATH=:$PYTHONPATH:$PIRATEBOX_PYTHONPATH
-
 # Some things that run always
 touch /var/lock/piratebox
 
