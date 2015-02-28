@@ -15,9 +15,6 @@ if [ -z  $1 ] || [ -z $2 ]; then
   echo "Usage install_piratebox my_config <part>"
   echo "   Parts: "
   echo "       part2          : sets Permissions and links correctly"
-  # echo "       imageboard     : configures kareha imageboard with Basic configuration"
-  # echo "                        should be installed in <Piratebox-Folder>/share/board"
-  # echo "       pyForum        : Simple PythonForum"
   echo "       station_cnt        : Adds Statio counter to your Box - crontab entry"
   echo "       flush_dns_reg      : Installs crontask to flush dnsmasq regulary"
   echo "       hostname  'name'   : Exchanges the Hostname displayed in browser"
@@ -34,34 +31,8 @@ fi
 PIRATEBOX_CONFIG=$1
 . $1 
 
-# if [ $2 = 'pyForum' ] ; then
-#     cp -v $PIRATEBOX_FOLDER/src/forest.py  $WWW_FOLDER/cgi-bin
-#     cp -v $PIRATEBOX_FOLDER/src/forest.css $WWW_FOLDER/
-#     cp -v $PIRATEBOX_FOLDER/src/forum_forest.html  $WWW_FOLDER/forum.html
-#     mkdir -p $PIRATEBOX_FOLDER/forumspace
-#     chmod a+rw -R  $PIRATEBOX_FOLDER/forumspace
-#     chown $LIGHTTPD_USER:$LIGHTTPD_GROUP  $WWW_FOLDER/cgi-bin/forest.py
-#     chown $LIGHTTPD_USER:$LIGHTTPD_GROUP  $WWW_FOLDER/forest.css
-#     chown $LIGHTTPD_USER:$LIGHTTPD_GROUP  $WWW_FOLDER/forum.html
-#     echo "Copied the files. Recheck your PirateBox now. "
-# fi
-
-
-
 if [ $2 = 'part2' ] ; then
    echo "Starting initialize PirateBox Part2..."
-#Create directories 
-#   mkdir -p $PIRATEBOX_FOLDER/share/Shared
-   #mkdir -p $UPLOADFOLDER
-   #mkdir -p $PIRATEBOX_FOLDER/share/board
-   #mkdir -p $PIRATEBOX_FOLDER/share/tmp
-   #mkdir -p $PIRATEBOX_FOLDER/tmp
-
-#Copy Forban-Link spacer
-   #cp $PIRATEBOX_FOLDER/src/no_link.html $PIRATEBOX_FOLDER/www/forban_link.html
-
-   #Distribute the Directory Listing files
-   # $PIRATEBOX_FOLDER/bin/distribute_files.sh $SHARE_FOLDER/Shared true
    #Set permissions
    chown $LIGHTTPD_USER:$LIGHTTPD_GROUP  $PIRATEBOX_FOLDER/share -R
    chmod  u+rw $PIRATEBOX_FOLDER/share
@@ -69,72 +40,7 @@ if [ $2 = 'part2' ] ; then
    # chmod u+x $PIRATEBOX_FOLDER/www/cgi-bin/* 
    chown $LIGHTTPD_USER:$LIGHTTPD_GROUP  $PIRATEBOX_FOLDER/tmp
    chown $LIGHTTPD_USER:$LIGHTTPD_GROUP  $PIRATEBOX_FOLDER/tmp -R
-
-
-#Install a small script, that the link on the main page still works
-   # if  [ !  -f $PIRATEBOX_FOLDER/share/board/kareha.pl ] ; then  
-   #    cp $PIRATEBOX_FOLDER/src/kareha.pl $PIRATEBOX_FOLDER/share/board
-   # fi
-  
-   # [ ! -L $PIRATEBOX_FOLDER/www/board  ] && ln -s $PIRATEBOX_FOLDER/share/board $PIRATEBOX_FOLDER/www/board
-   # [ ! -L $PIRATEBOX_FOLDER/www/Shared ] && ln -s $UPLOADFOLDER  $PIRATEBOX_FOLDER/www/Shared
 fi 
-
-#Install the image-board
-# if [ $2 = 'imageboard' ] ; then
-   
-#     #Activate on mainpage
-#     cp $PIRATEBOX_FOLDER/src/forum_kareha.html  $WWW_FOLDER/forum.html
-
-
-#     if [ -e  $PIRATEBOX_FOLDER/share/board/init_done ] ; then
-#        echo "$PIRATEBOX_FOLDER/share/board/init_done file Found in Kareha folder. Won't reinstall board."
-#        exit 0;
-#     fi
-
-    
-#     cd $PIRATEBOX_FOLDER/tmp
-#     KAREHA_RELEASE=kareha_3.1.4.zip
-#     if [ ! -e $PIRATEBOX_FOLDER/tmp/$KAREHA_RELEASE ] ; then
-# 	echo "  Wgetting kareha-zip file "
-#     	wget http://wakaba.c3.cx/releases/$KAREHA_RELEASE
-# 	if [ "$?" != "0" ] ; then
-#        		echo "wget kareha failed.. you can place the current file your to  $PIRATEBOX_FOLDER/tmp "
-# 	 fi
-#     fi
-
-#     if [ -e  $PIRATEBOX_FOLDER/tmp/$KAREHA_RELEASE ] ; then
-#        echo "Kareha Zip found..."
-#     else 
-#        echo "No Zip found, abort "
-#        exit 255
-#     fi
-    
-#     unzip $KAREHA_RELEASE
-#     mv kareha/* $PIRATEBOX_FOLDER/share/board 
-#     rm  -rf $PIRATEBOX_FOLDER/tmp/kareha* 
-    
-#     cd  $PIRATEBOX_FOLDER/share/board  
-#     cp -R  mode_image/* ./   
-#     cp  $PIRATEBOX_FOLDER/src/kareha_img_config.pl $PIRATEBOX_FOLDER/share/board/config.pl 
-#     chown -R $LIGHTTPD_USER:$LIGHTTPD_GROUP  $PIRATEBOX_FOLDER/share/board   
-#     #Install filetype thumbnails
-#     mv $PIRATEBOX_FOLDER/share/board/extras/icons  $PIRATEBOX_FOLDER/share/board/ 
-
-#     #Activate on mainpage
-#     cp $PIRATEBOX_FOLDER/src/forum_kareha.html  $WWW_FOLDER/forum.html
-
-#     echo "Errors in chown occurs if you are using vfat on the USB stick"
-#     echo "   . don't Panic!"
-#     echo "Generating index page"
-#     cd /tmp
-#     wget -q http://127.0.0.1/board/kareha.pl 
-#     echo "finished!"
-#     echo "Now Edit your kareha settings file to change your ADMIN_PASS and SECRET : "
-#     echo "  # vi $PIRATEBOX_FOLDER/www/board/config.pl "
-
-#     touch  $PIRATEBOX_FOLDER/share/board/init_done
-# fi
 
 if [ $2 = "station_cnt" ] ; then
     #we want to append the crontab, not overwrite
