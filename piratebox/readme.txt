@@ -48,14 +48,9 @@ What to do? / Install
 I created
 /opt/piratebox/bin    - Binarys and Scripts
 /opt/piratebox/conf   - Piratebox related configs (seperated from the normal system-configs!)
-/opt/piratebox/share  - Mountpoint (with the first start of piratebox, the correct permissions will be set)
-/opt/piratebox/share/Shared   -  Unsorted upload folder
-/opt/piratebox/share/board      -  imageboard location
 /opt/piratebox/init.d - the init-script (later more?)
 /opt/piratebox/www    - Webfolder with cgi-scripts and static html pages
 /opt/piratebox/tmp    - Folder with the error-log
-
-
 
 
 Change directory?

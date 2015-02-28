@@ -18,6 +18,7 @@
 #       UPDATED: 02.22.2015 by Brannon Dorsey
 #      REVISION:  0.3.1
 #=======================================================================
+
 #Import PirateBox conf
 CURRENT_CONF=piratebox/conf/piratebox.conf
 scriptfile="$(readlink -f $0)"
@@ -55,19 +56,19 @@ if [[ -d /opt/piratebox ]]; then
 fi
 
 cp -rv "$CURRENT_DIR"/piratebox /opt &> /dev/null
-echo "Finished copying files to "/opt/piratebox"..."
+echo "Finished copying files to /opt/piratebox..."
 
-if cat /etc/hosts | grep "$NET.$IP_SHORT piratebox.lan$" 2> /dev/null ; then 
+if ! grep "$NET.$IP_SHORT piratebox.lan$" /etc/hosts > /dev/null; then 
 	echo "\"$NET.$IP_SHORT piratebox.lan\" was already found in /etc/hosts"
 else
 	echo "Adding $NET.$IP_SHORT piratebox.lan to /etc/hosts"
 	echo "$NET.$IP_SHORT piratebox.lan">>/etc/hosts
 fi
 
-if cat /etc/hosts | grep "$NET.$IP_SHORT piratebox$" 2> /dev/null ; then 
-	echo "Adding $NET.$IP_SHORT piratebox to /etc/hosts"
+if ! grep "$NET.$IP_SHORT piratebox$" /etc/hosts > /dev/null ; then 
 	echo "\"$NET.$IP_SHORT piratebox\" was already found in /etc/hosts"
 else
+	echo "Adding $NET.$IP_SHORT piratebox to /etc/hosts"
 	echo "$NET.$IP_SHORT piratebox">>/etc/hosts
 fi
 

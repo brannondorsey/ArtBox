@@ -14,6 +14,9 @@ CHANGELOG
 * Remove init.d/piratebox_alt
 * Add fastcgi.conf to conf/lighttpd/
 * Remove env from conf/lighttpd
+* Remove uneeded bin/ scripts
+* Modify conf/piratebox.conf removing uneeded variables and add new ones
+# Remove share/ directory
 
 The below changelog pertains to the PirateBox project
 before it was forked and modified as EmptyBox

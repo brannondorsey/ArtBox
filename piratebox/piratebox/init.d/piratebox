@@ -13,12 +13,12 @@
 
 ###  
 #  Default start-stop script for piratebox services on a laptop
-#   written by Matthias Strubel  (matthias.strubel@aod-rpg.de) 2011-02-22 
-#   modified for ArtBox by Brannon Dorsey (brannon@brannondorsey.com) 2015-02-22
+#  written by Matthias Strubel  (matthias.strubel@aod-rpg.de) 2011-02-22 
 #  licenced by gpl, feel free to improve and send me comments
+#  
+#  modified for EmptyBox by Brannon Dorsey (brannon@brannondorsey.com) 2015-02-22
 
 . /lib/lsb/init-functions
-
 
 [ -f /etc/default/rcS ] && . /etc/default/rcS
 
@@ -78,6 +78,19 @@ case "$1" in
 
     echo "Empty tmp folder"
     find   $PIRATEBOX/tmp/  -exec rm {} \;
+
+    if [ "$RANDOMIZE_MAC_ADDRESS" = yes] ; then
+        if [ -x "$(command -v macchanger)" ]; then
+          log_daemon_msg "Randomizing MAC address"
+          macchanger -r $INTERFACE
+          log_end_msg $?
+        else
+          echo "RANDOMIZE_MAC_ADDRESS=\"yes\", however macchanger is not installed."
+          echo "Your mac address was not randomized."
+          echo "Install macchanger with:"
+          echo "   sudo apt-get install macchanger"
+        fi
+    fi
 
     if [ "$DO_IW" = "yes" ] ; then
        log_daemon_msg " Setting up Interface (iw) "
@@ -149,6 +162,12 @@ case "$1" in
     echo ""
 
      $PIRATEBOX/bin/hooks/hook_piratebox_stop.sh  "$CONF"
+
+    if [ "$RANDOMIZE_MAC_ADDRESS" = yes && -x "$(command -v macchanger)" ] ; then
+       log_daemon_msg  "Reseting MAC address"
+       macchanger -p $INTERFACE
+       log_end_msg  $?
+    fi
 
     if [  "$USE_APN"  = "yes" ] ;  then
        log_daemon_msg  "Stopping hostap... "

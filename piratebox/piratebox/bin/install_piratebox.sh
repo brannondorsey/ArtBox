@@ -34,8 +34,6 @@ PIRATEBOX_CONFIG=$1
 if [ $2 = 'part2' ] ; then
    echo "Starting initialize PirateBox Part2..."
    #Set permissions
-   chown $LIGHTTPD_USER:$LIGHTTPD_GROUP  $PIRATEBOX_FOLDER/share -R
-   chmod  u+rw $PIRATEBOX_FOLDER/share
    chown $LIGHTTPD_USER:$LIGHTTPD_GROUP  $PIRATEBOX_FOLDER/www -R
    # chmod u+x $PIRATEBOX_FOLDER/www/cgi-bin/* 
    chown $LIGHTTPD_USER:$LIGHTTPD_GROUP  $PIRATEBOX_FOLDER/tmp
