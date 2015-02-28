@@ -5,7 +5,7 @@
 # 
 #         USAGE:  ./install.sh 
 # 
-#   DESCRIPTION:  Install file for ArtBox (a fork of PirateBox). 
+#   DESCRIPTION:  Install file for EmptyBox (a fork of PirateBox). 
 # 
 #       OPTIONS:  ./install.sh
 #  REQUIREMENTS:  ---
@@ -163,7 +163,7 @@ fi
 
 echo ""
 echo "##############################"
-echo "#PirateBox has been installed#"
+echo "#EmptyBox has been installed#"
 echo "##############################"
 echo ""
 echo "Use: sudo service piratebox <start|stop>"

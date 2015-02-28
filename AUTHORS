@@ -1,3 +1,14 @@
+####################
+# EmptyBox Authors #
+####################
+
+EmptyBox script modifications and documentation:
+    Brannon Dorsey http://brannondorsey.com
+
+#####################
+# PirateBox Authors #
+#####################
+
 Based on idea of David Darts:  http://wiki.daviddarts.com/PirateBox
 
 Script collection by:
@@ -21,12 +32,3 @@ Contributors for modifications:
        # taffy-nay
        # risca
        # ... and all others I might have forgotten.
-
-
-Design:
-   * David Brooks
-
-Based on Software:
-   * Droopy     - http://stackp.online.fr/?p=28
-   * forest.py  - http://www.triv.org.uk/~nelis/forest/
-   * kareha     - http://wakaba.c3.cx/s/web/wakaba_kareha

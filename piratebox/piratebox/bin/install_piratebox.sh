@@ -35,7 +35,7 @@ if [ $2 = 'part2' ] ; then
    echo "Starting initialize PirateBox Part2..."
    #Set permissions
    chown $LIGHTTPD_USER:$LIGHTTPD_GROUP  $PIRATEBOX_FOLDER/www -R
-   # chmod u+x $PIRATEBOX_FOLDER/www/cgi-bin/* 
+   # chmod u+x $PIRATEBOX_FOLDER/www/cgi-bin/*
    chown $LIGHTTPD_USER:$LIGHTTPD_GROUP  $PIRATEBOX_FOLDER/tmp
    chown $LIGHTTPD_USER:$LIGHTTPD_GROUP  $PIRATEBOX_FOLDER/tmp -R
 fi 
