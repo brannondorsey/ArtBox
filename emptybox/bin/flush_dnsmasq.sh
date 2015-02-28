@@ -4,7 +4,7 @@
 #   Sends a SIGHUB to dnsmasq to reread its hosts files
 #     Needed for mesh feature. Will enable easy dns-service for this.
 
-PIDFILE_DNSMASQ=/var/run/piratebox_dnsmasq.pid
+PIDFILE_DNSMASQ=/var/run/emptybox_dnsmasq.pid
 
 kill -1 `cat $PIDFILE_DNSMASQ`
 

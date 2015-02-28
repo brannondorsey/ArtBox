@@ -2,8 +2,8 @@
 
 # ---- TEMPLATE ----
 
-# Hook for modifcation stuff before 
-#          piratebox/bin/install  ... part2 
+# Hook for modifcation stuff right after
+#          emptybox/bin/install_emptybox.sh  ... part2 
 # is run.
 
 if [ !  -f $1 ] ; then

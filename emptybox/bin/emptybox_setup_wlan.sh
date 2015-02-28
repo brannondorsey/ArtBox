@@ -33,7 +33,7 @@ probe() {
 # Load configfile
 
 if [ -z  $1 ] || [ -z $2 ]; then 
-  echo "Usage piratebox_setup_wlan.sh my_config <start|stop|probe>"
+  echo "Usage emptybox_setup_wlan.sh my_config <start|stop|probe>"
   exit 1
 fi
 

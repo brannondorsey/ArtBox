@@ -1,7 +1,7 @@
-echo "Stopping piratebox..."
-sudo /etc/init.d/piratebox stop
-echo "Removing piratebox daemon..."
-sudo update-rc.d piratebox remove 
-sudo rm -v /etc/init.d/piratebox
-echo "Removing piratebox folder..."
-sudo rm -rf -v /opt/piratebox 
+echo "Stopping EmptyBox..."
+sudo /etc/init.d/emptybox stop
+echo "Removing EmptyBox daemon..."
+sudo update-rc.d emptybox remove 
+sudo rm -v /etc/init.d/emptybox
+echo "Removing EmptyBox folder..."
+sudo rm -rf -v /opt/emptybox

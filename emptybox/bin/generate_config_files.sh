@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Generate severall configuration files out of piratebox.conf
+# Generate severall configuration files out of emptybox.conf
 #     conf/hosts_generated
 #     conf/dnsmasq_generated.conf
 #     conf/radvd_generated.conf
@@ -10,14 +10,14 @@
 #     conf/hosts
 #     conf/dnsmasq_default.conf
 #
-#  it is using the following VARS out of piratebox.conf:
+#  it is using the following VARS out of emptybox.conf:
 #    NET               = The network of your box  i.e. 192.168.1
-#    IP_SHORT          = The ip of the piratebox  i.e. 1    results 192.168.1.1
+#    IP_SHORT          = The ip of the emptybox  i.e. 1    results 192.168.1.1
 #    START_LEASE       =   Range of dhcp leases  start  10
 #    END_LEASE         =                         end    250
 #    LEASE_DURATION    =    lease time           30min
-#    HOSTNAME          =  piratebox.lan   - o'rly?  Maybe generate some additional stuff here
-#    PIRATEBOX         = PirateBox Folder
+#    HOSTNAME          = emptybox.lan   - o'rly?  Maybe generate some additional stuff here
+#    EMPTYBOX         = EmptyBox Folder
 #    
 #
 #  Matthias Strubel    -- 08.06.2012
@@ -107,7 +107,7 @@ generate_radvd(){
 
 if [ -z  $1 ] ; then
   echo "Usage is 
-      generate_config_files.sh /opt/piratebox/conf/piratebox.conf
+      generate_config_files.sh /opt/emptybox/conf/emptybox.conf
    "
    exit 255
 fi
@@ -121,7 +121,7 @@ fi
 
 IPV6="#"
 
-set_pathnames  $PIRATEBOX_FOLDER
+set_pathnames  $EMPTYBOX_FOLDER
 
 ipv6_call=''
 if [ "$IPV6_ENABLE" = "yes" ] ; then
