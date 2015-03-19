@@ -111,7 +111,7 @@ if [ "$PKGSTOINSTALL" != "" ]; then
 				apt-get install $PKGSTOINSTALL
 			fi
 			if [[ $EXTRAPKGSURE = "Y" || $EXTRAPKGSURE = "y" || $EXTRAPKGSURE = "" ]]; then
-				apt-get install $PKGSTOINSTALL
+				apt-get install $EXTRAPKGSTOINSTALL
 			fi
 		# OpenSuse (with zypper)
 		#elif which zypper &> /dev/null; then
@@ -122,7 +122,7 @@ if [ "$PKGSTOINSTALL" != "" ]; then
 				urpmi $PKGSTOINSTALL
 			fi
 			if [[ $EXTRAPKGSURE = "Y" || $EXTRAPKGSURE = "y" || $EXTRAPKGSURE = "" ]]; then
-				urpmi $PKGSTOINSTALL
+				urpmi $EXTRAPKGSTOINSTALL
 			fi
 		# Fedora and CentOS (with yum)
 		elif which yum &> /dev/null; then
@@ -130,7 +130,7 @@ if [ "$PKGSTOINSTALL" != "" ]; then
 				yum install $PKGSTOINSTALL
 			fi
 			if [[ $EXTRAPKGSURE = "Y" || $EXTRAPKGSURE = "y" || $EXTRAPKGSURE = "" ]]; then
-				yum install $PKGSTOINSTALL
+				yum install $EXTRAPKGSTOINSTALL
 			fi
 		# ArchLinux (with pacman)
 		elif which pacman &> /dev/null; then
@@ -138,7 +138,7 @@ if [ "$PKGSTOINSTALL" != "" ]; then
 				pacman -Sy $PKGSTOINSTALL
 			fi
 			if [[ $EXTRAPKGSURE = "Y" || $EXTRAPKGSURE = "y" || $EXTRAPKGSURE = "" ]]; then
-				pacman -Sy $PKGSTOINSTALL
+				pacman -Sy $EXTRAPKGSTOINSTALL
 			fi
 		# Else, if no package manager has been found
 		else
