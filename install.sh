@@ -58,17 +58,17 @@ fi
 cp -rv "$CURRENT_DIR"/emptybox /opt &> /dev/null
 echo "Finished copying files to /opt/emptybox..."
 
-if ! grep "$NET.$IP_SHORT emptybox.lan$" /etc/hosts > /dev/null; then 
-	echo "\"$NET.$IP_SHORT emptybox.lan\" was already found in /etc/hosts"
+if ! grep "$NET.$IP_SHORT LANlockED.lan$" /etc/hosts > /dev/null; then 
+	echo "\"$NET.$IP_SHORT LANlockED.lan\" was already found in /etc/hosts"
 else
-	echo "Adding $NET.$IP_SHORT emptybox.lan to /etc/hosts"
-	echo "$NET.$IP_SHORT emptybox.lan">>/etc/hosts
+	echo "Adding $NET.$IP_SHORT LANlockED.lan to /etc/hosts"
+	echo "$NET.$IP_SHORT LANlockED.lan">>/etc/hosts
 fi
 
 if ! grep "$NET.$IP_SHORT emptybox$" /etc/hosts > /dev/null ; then 
-	echo "\"$NET.$IP_SHORT emptybox\" was already found in /etc/hosts"
+	echo "\"$NET.$IP_SHORT LANlockED\" was already found in /etc/hosts"
 else
-	echo "Adding $NET.$IP_SHORT emptybox to /etc/hosts"
+	echo "Adding $NET.$IP_SHORT LANlockED to /etc/hosts"
 	echo "$NET.$IP_SHORT emptybox">>/etc/hosts
 fi
 

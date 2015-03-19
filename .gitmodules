@@ -1,0 +1,3 @@
+[submodule "emptybox/www"]
+	path = emptybox/www
+	url = https://github.com/brannondorsey/LANlockED.git
